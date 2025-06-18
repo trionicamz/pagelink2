@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minha LinkPage com PDF</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <img src="perfil.jpg" alt="Seu Perfil" class="profile-pic" />
+    <h1 class="name">Seu Nome</h1>
+    <p class="subtitle">Clique abaixo para carregar e abrir um PDF</p>
+    <p>git push -u origin main</p>
+
+    <div class="links">
+      <input type="file" id="pdfUpload" accept="application/pdf" class="btn-file" />
+      <button onclick="abrirPDF()" class="btn btn-pdf">Abrir PDF</button>
+    </div>
+  </div>
+
+  <script>
+    let arquivoPDF;
+
+    document.getElementById('pdfUpload').addEventListener('change', function(event) {
+      arquivoPDF = event.target.files[0];
+    });
+
+    function abrirPDF() {
+      if (arquivoPDF) {
+        const fileURL = URL.createObjectURL(arquivoPDF);
+        window.open(fileURL, '_blank');
+      } else {
+        alert('Por favor, selecione um arquivo PDF primeiro.');
+      }
+    }
+  </script>
+</body>
+</html>
